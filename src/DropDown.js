@@ -3,7 +3,7 @@ export function DropDown({ text, onTipEntered }) {
     <div>
       <label>{text}</label>
       <form>
-        <select onChange={(e) => onTipEntered(e.target.value)}>
+        <select onChange={(e) => onTipEntered(Number(e.target.value))}>
           <option value="0">Dissatisfied (0%)</option>
           <option value="5">It was OK (5%)</option>
           <option value="10">It was good (10%)</option>
