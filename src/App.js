@@ -7,9 +7,12 @@ function TipCalculator() {
   const [billAmount, setBillAmount] = useState(0);
   const [yourTip, setYourTip] = useState(0);
   const [friendTip, setFriendTip] = useState(0);
-  const average = (Number(yourTip) + Number(friendTip)) / 2;
-  const tipTotal = Number(billAmount * average) / 100;
-  const finalTotal = Number(billAmount) + Number(tipTotal);
+
+  function finalTotalCalc() {
+    const average = (Number(yourTip) + Number(friendTip)) / 2;
+    const tipTotal = (Number(billAmount) * average) / 100;
+    return Number(billAmount) + tipTotal;
+  }
 
   function handleReset() {
     const resetConfirmed = window.confirm("Are you sure you want to reset?");
