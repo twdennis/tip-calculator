@@ -7,15 +7,9 @@ function TipCalculator() {
   const [billAmount, setBillAmount] = useState(0);
   const [yourTip, setYourTip] = useState(0);
   const [friendTip, setFriendTip] = useState(0);
-  // const average = (Number(yourTip) + Number(friendTip)) / 2;
-  // const tipTotal = Number(billAmount * average) / 100;
-  // const finalTotal = Number(billAmount) + Number(tipTotal);
-
-  function finalTotalCalc() {
-    const average = (Number(yourTip) + Number(friendTip)) / 2;
-    const tipTotal = (Number(billAmount) * average) / 100;
-    return Number(billAmount) + tipTotal;
-  }
+  const average = (Number(yourTip) + Number(friendTip)) / 2;
+  const tipTotal = Number(billAmount * average) / 100;
+  const finalTotal = Number(billAmount) + Number(tipTotal);
 
   function handleReset() {
     const resetConfirmed = window.confirm("Are you sure you want to reset?");
@@ -38,7 +32,7 @@ function TipCalculator() {
         text={"How did your friend rate the service?"}
         onTipEntered={setFriendTip}
       />
-      <DisplayTotal finalTotal={finalTotalCalc} />
+      <DisplayTotal total={finalTotal} />
       <Reset onReset={handleReset} />
     </div>
   );
@@ -73,10 +67,10 @@ function DropDown({ text, onTipEntered }) {
   );
 }
 
-function DisplayTotal({ finalTotal }) {
+function DisplayTotal({ total }) {
   return (
     <div>
-      <h1>You pay {finalTotal()}</h1>
+      <h1>You pay {total}</h1>
     </div>
   );
 }
