@@ -6,8 +6,11 @@ import { BillAmount } from "./BillAmount";
 
 export function TipCalculator() {
   const [billAmount, setBillAmount] = useState("");
-  const [yourTip, setYourTip] = useState("");
-  const [friendTip, setFriendTip] = useState("");
+  const [yourTip, setYourTip] = useState(0);
+  const [friendTip, setFriendTip] = useState(0);
+
+  const totalTip = (billAmount * ((yourTip + friendTip) / 2 / 100)).toFixed(2);
+  const billDisplay = Number(billAmount).toFixed(2);
 
   function finalTotalCalc() {
     const average = (Number(yourTip) + Number(friendTip)) / 2;
@@ -36,8 +39,17 @@ export function TipCalculator() {
         text={"How did your friend rate the service?"}
         onTipEntered={setFriendTip}
       />
-      <DisplayTotal finalTotal={finalTotalCalc} />
-      <Reset onReset={handleReset} />
+
+      {billAmount > 0 && (
+        <>
+          <DisplayTotal
+            finalTotal={finalTotalCalc}
+            tip={totalTip}
+            bill={billDisplay}
+          />
+          <Reset onReset={handleReset} />
+        </>
+      )}
     </div>
   );
 }

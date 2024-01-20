@@ -5,7 +5,7 @@ export function BillAmount({ billAmount, onBillAmountEntered }) {
       <input
         type="text"
         value={billAmount}
-        onChange={(e) => onBillAmountEntered(e.target.value)}
+        onChange={(e) => onBillAmountEntered(Number(e.target.value))}
         placeholder="£0.00"
       />
     </div>
