@@ -5,14 +5,14 @@ import { DropDown } from "./DropDown";
 import { BillAmount } from "./BillAmount";
 
 export function TipCalculator() {
-  const [billAmount, setBillAmount] = useState(0);
-  const [yourTip, setYourTip] = useState(0);
-  const [friendTip, setFriendTip] = useState(0);
+  const [billAmount, setBillAmount] = useState("");
+  const [yourTip, setYourTip] = useState("");
+  const [friendTip, setFriendTip] = useState("");
 
   function finalTotalCalc() {
     const average = (Number(yourTip) + Number(friendTip)) / 2;
     const tipTotal = (Number(billAmount) * average) / 100;
-    return Number(billAmount) + tipTotal;
+    return (Number(billAmount) + tipTotal).toFixed(2);
   }
 
   function handleReset() {

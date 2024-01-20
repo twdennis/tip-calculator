@@ -6,6 +6,7 @@ export function BillAmount({ billAmount, onBillAmountEntered }) {
         type="text"
         value={billAmount}
         onChange={(e) => onBillAmountEntered(e.target.value)}
+        placeholder="£0.00"
       />
     </div>
   );
