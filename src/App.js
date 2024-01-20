@@ -35,7 +35,7 @@ function TipCalculator() {
         text={"How did your friend rate the service?"}
         onTipEntered={setFriendTip}
       />
-      <DisplayTotal finalTotal={finalTotalCalc} />
+      <DisplayTotal total={finalTotal} />
       <Reset onReset={handleReset} />
     </div>
   );
@@ -70,10 +70,10 @@ function DropDown({ text, onTipEntered }) {
   );
 }
 
-function DisplayTotal({ finalTotal }) {
+function DisplayTotal({ total }) {
   return (
     <div>
-      <h1>You pay {finalTotal()}</h1>
+      <h1>You pay {total}</h1>
     </div>
   );
 }
